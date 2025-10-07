@@ -1,0 +1,194 @@
+<!DOCTYPE html>
+<html lang="id">
+<head>
+<meta charset="UTF-8">
+<meta name="viewport" content="width=device-width, initial-scale=1.0">
+<title>Puncak Bogor - Wisata Alam</title>
+<style>
+  * {
+    box-sizing: border-box;
+    font-family: "Segoe UI", Arial, sans-serif;
+  }
+
+  body {
+    margin: 0;
+    background: #f4f4f4;
+  }
+
+  /* Struktur tabel utama */
+  .container {
+    display: grid;
+    grid-template-rows: 80px 1fr 60px;
+    grid-template-columns: 200px 1fr;
+    grid-template-areas:
+      "header header"
+      "sidebar main"
+      "footer footer";
+    height: 100vh;
+    border: 3px solid #1abc9c;
+  }
+
+  header {
+    grid-area: header;
+    background-color: #1abc9c;
+    color: white;
+    text-align: center;
+    font-size: 28px;
+    font-weight: bold;
+    line-height: 80px;
+    border-bottom: 3px solid #16a085;
+  }
+
+  aside {
+    grid-area: sidebar;
+    background: #2c3e50;
+    color: white;
+    display: flex;
+    flex-direction: column;
+    align-items: center;
+    padding-top: 20px;
+    border-right: 3px solid #1abc9c;
+  }
+
+  aside button {
+    background: white;
+    color: #2c3e50;
+    border: none;
+    padding: 10px 20px;
+    margin: 10px 0;
+    border-radius: 8px;
+    width: 120px;
+    font-weight: bold;
+    cursor: pointer;
+    transition: 0.3s;
+  }
+
+  aside button:hover, aside button.active {
+    background: #1abc9c;
+    color: white;
+  }
+
+  main {
+    grid-area: main;
+    padding: 20px;
+    background: white;
+    overflow-y: auto;
+  }
+
+  .content {
+    display: none;
+    border: 2px solid #1abc9c;
+    border-radius: 10px;
+    padding: 20px;
+    text-align: center;
+    animation: fadeIn 0.5s ease;
+  }
+
+  .content.active {
+    display: block;
+  }
+
+  .content img {
+    width: 80%;
+    height: 250px;
+    object-fit: cover;
+    border-radius: 10px;
+    border: 3px solid #1abc9c;
+  }
+
+  .content h2 {
+    margin-top: 20px;
+    color: #16a085;
+  }
+
+  footer {
+    grid-area: footer;
+    background: #1abc9c;
+    color: white;
+    text-align: center;
+    font-weight: bold;
+    line-height: 60px;
+    border-top: 3px solid #16a085;
+  }
+
+  /* Animasi lembut */
+  @keyframes fadeIn {
+    from {opacity: 0;}
+    to {opacity: 1;}
+  }
+
+  ul {text-align: left; margin-left: 25%;}
+  li {margin-bottom: 8px;}
+</style>
+</head>
+<body>
+
+<div class="container">
+  <!-- Header -->
+  <header>PUNCAK BOGOR</header>
+
+  <!-- Sidebar -->
+  <aside>
+    <button class="active" onclick="showContent('menu')">Menu</button>
+    <button onclick="showContent('profil')">Profil</button>
+    <button onclick="showContent('gallery')">Gallery</button>
+    <button onclick="showContent('kontak')">Contact</button>
+  </aside>
+
+  <!-- Konten Utama -->
+  <main>
+    <div id="menu" class="content active">
+      <img src="image/puncak1.jpg" width="126 alt="gambarku"
+            usemap="#picturemap">
+      <h2>Selamat Datang di Wisata Puncak Bogor</h2>
+      <p>Menikmati keindahan alam, udara sejuk, serta pemandangan pegunungan yang memanjakan mata.</p>
+    </div>
+
+    <div id="profil" class="content">
+      <h2>Profil Puncak Bogor</h2>
+      <p>Puncak Bogor merupakan salah satu destinasi wisata alam favorit di Jawa Barat. Terletak di antara Kabupaten Bogor dan Cianjur, kawasan ini menawarkan suasana pegunungan yang segar serta panorama indah kebun teh.</p>
+      <p>Terdapat banyak tempat menarik seperti Taman Bunga Nusantara, Curug Cilember, serta aneka café dengan pemandangan lembah dan gunung.</p>
+    </div>
+
+    <div id="gallery" class="content">
+      <h2>Gallery</h2>
+      <p>Beberapa potret keindahan alam di kawasan Puncak Bogor:</p>
+      <img src="image/puncak2.jpg" width="126 alt="gambarku"
+            usemap="#picturemap">
+      <img src="image/puncak3.jpg" width="126 alt="gambarku"
+            usemap="#picturemap">
+    </div>
+
+    <div id="kontak" class="content">
+      <h2>Kontak Kami</h2>
+      <p>Hubungi kami untuk informasi wisata lebih lanjut:</p>
+      <ul>
+        <li>📍 Alamat: Puncak, Kabupaten Bogor, Jawa Barat</li>
+        <li>📞 Telp: +62 812-3456-7890</li>
+        <li>✉️ Email: info@puncakbogor.com</li>
+      </ul>
+    </div>
+  </main>
+
+  <!-- Footer -->
+  <footer>© 2025 Puncak Bogor — Nikmati Alam & Udara Sejuk</footer>
+</div>
+
+<script>
+  function showContent(id) {
+    // sembunyikan semua konten
+    const contents = document.querySelectorAll('.content');
+    contents.forEach(content => content.classList.remove('active'));
+
+    // tampilkan yang dipilih
+    document.getElementById(id).classList.add('active');
+
+    // ubah warna tombol aktif
+    const buttons = document.querySelectorAll('aside button');
+    buttons.forEach(btn => btn.classList.remove('active'));
+    event.target.classList.add('active');
+  }
+</script>
+
+</body>
+</html>
